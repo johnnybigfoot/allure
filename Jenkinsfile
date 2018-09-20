@@ -1,5 +1,6 @@
 node {
     try {
+        setProperty('allure.results.directory', 'build/allure-results')
         stage('Checkout') {
             checkout scm
             sh "git checkout $Branch"
