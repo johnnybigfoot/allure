@@ -1,0 +1,50 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.5.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "io.qameta.allure:allure-gradle:2.5"
+    }
+}
+plugins {
+    id 'io.qameta.allure' version '2.5'
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'io.qameta.allure'
+
+allure {
+    autoconfigure = true
+    version = '2.6.0'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-test")
+    compile('org.springframework.boot:spring-boot-starter-validation')
+    compile('org.springframework.retry:spring-retry')
+    //
+    compile group: 'org.aspectj', name: 'aspectjrt', version: '1.8.12'
+    testCompile group: 'ru.yandex.qatools.allure', name: 'allure-junit-adaptor', version: '1.5.4'
+    compile group: 'ru.yandex.qatools.allure', name: 'allure-java-annotations', version: '1.5.4'
+    compile group: 'ru.yandex.qatools.allure', name: 'allure-report-data', version: '1.5.4'
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    compile group: 'ru.yandex.qatools.allure', name: 'allure-report-builder', version: '2.3'
+    compile group: 'ru.yandex.qatools.allure', name: 'allure-junit-plugin', version: '1.2.4'
+}
