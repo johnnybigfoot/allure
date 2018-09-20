@@ -2,7 +2,7 @@ node {
 //        setProperty('allure.results.directory', 'build/allure-results')
         stage('Checkout') {
             checkout scm
-            sh "git pull"
+            sh "git pull origin master"
         }
 
             stage('Clean') {
