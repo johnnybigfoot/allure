@@ -1,6 +1,6 @@
 node {
     try {
-        setProperty('allure.results.directory', 'build/allure-results')
+//        setProperty('allure.results.directory', 'build/allure-results')
         stage('Checkout') {
             checkout scm
             sh "git checkout $Branch"
@@ -26,6 +26,8 @@ node {
                             reportFiles          : 'index.html',
                             reportName           : "CRMT Test Report"
                     ])
+                    allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+
                 }
             }
 
